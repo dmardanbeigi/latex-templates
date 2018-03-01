@@ -1,0 +1,187 @@
+%------for cross referencing
+% Author: Diako Mardanbegi dmardanbeigi@gmail.com
+%I merged all files because of the problem of cross referencing. I didn't have access to the labels defined in the main thesis file here.
+%-------
+
+
+
+
+% Preambule
+\input{preambule}
+
+	\usepackage[table]{xcolor} %for tables
+
+
+% Style: By removing the following line, the style used is the basic book style
+\input{style}
+
+\usepackage{pdfpages}
+\usepackage{gensymb}
+\usepackage{amsmath}
+
+
+\usepackage{ifthen}
+\newboolean{compilePDFs}
+\newboolean{compilePDFChapters}
+
+% Document
+\begin{document}
+	
+	
+	
+    % Roman numbering
+    \frontmatter 
+
+    % Cover page
+    \include{cover}
+    
+  
+    \cleardoublepage
+\textbf{{\large SUPERVISOR}}\\
+\vspace*{0.8cm}\\
+\Large{\textbf{\sc{{\small Associate professor } Name}}}\\
+\vspace*{0.8cm}
+\normalsize{\sc{University }}\\
+
+
+
+    
+    % Abstract
+    \include{abstract}
+
+    % Acknowledgments
+    \include{acknowledgments}
+    
+     \thispagestyle{empty}
+     \chapter*{Reader's Guide}
+ \addcontentsline{toc}{chapter}{Reader's Guide}
+ \markboth{Reader's Guide}{Reader's Guide}
+ 
+This dissertation is ...
+
+
+\chapter*{Preface}
+\addcontentsline{toc}{chapter}{Preface}
+ \markboth{Preface}{Preface}
+\label{sec:preface}
+
+\section*{List of Publications}
+\label{sec:publications}
+\paragraph{{\Large Papers}}\mbox{}\\
+The papers are listed in order of the submission time...
+
+\mbox{}\\
+
+\leavevmode{} \marginpar{\ \ \ \ Chapter \ref{chap:chapterX}} Paper one ...  
+\leavevmode{} \marginpar{\ \ \ \ Chapter \ref{chap:chapterY}} Paper two ...  
+
+
+
+
+    % Table of content
+    \setcounter{secnumdepth}{3}
+    \setcounter{tocdepth}{3}
+    \tableofcontents
+
+
+   % Arabe numbering
+    \mainmatter
+
+
+    % Part 1
+    \cleardoublepage
+    \phantomsection
+    \include{Introduction}
+
+\chapter{Introduction}
+\label{chap:Introduction}
+
+This chapter provides the motivations for this work ...
+
+
+
+\section{Motivations and Research Questions}
+\label{sec:MotivAndQ}
+
+
+\marginpar{\textit{{\small summery}}}
+
+\subsection{Research Questions}
+\label{sec:RQ}
+
+\marginpar{  \textit{{\small \textbf{Q1}} } \newline Section \ref{sec:X}}
+
+
+
+\section{Section X}
+\label{sec:X}
+bla bla bla ...
+\subsection{Subsection Y}
+bla bla bla ...
+\subsubsection{Subsubsection Z}
+bla bla bla ...
+
+%------------------------CONCLUSION OF THE CHAPTER %------------------------
+%------------------------
+%------------------------
+
+
+\setboolean{compilePDFs}{true} % compilePDFs=true or false
+\setboolean{compilePDFChapters}{true} 
+
+\ifthenelse {\boolean{compilePDFChapters}} {
+
+% %-------------------gaze pointing papers
+\chapter{Chapter One}
+\label{chap:ChapterOne}
+\ifthenelse {\boolean{compilePDFs}} { \includepdf[pagecommand={\thispagestyle{plain}},pages=-]{pdfs/p1.pdf}}
+
+\chapter{Chapter Two}
+\label{chap:ChapterTwo}
+\ifthenelse {\boolean{compilePDFs}} { \includepdf[pagecommand={\thispagestyle{plain}},pages=-]{pdfs/p2.pdf}}
+
+}
+
+
+\chapter{Discussion \& Future Work}
+This chapter summarizes the work presented in the thesis including a discussion in relation to the research questions, as well as a consideration of future research possibilities.
+
+\section{X}
+
+
+
+
+
+%    % Annexes
+%    \appendix
+%    \cleardoublepage
+%    \phantomsection
+%    \part{Annexes}
+%    \include{annexe_01}
+%    \include{annexe_02}
+
+    % Bibliography
+    \cleardoublepage 
+    \phantomsection 
+    \addcontentsline{toc}{part}{Bibliography}
+    \bibliographystyle{acm}
+    \bibliography{bibliography}    
+    
+    
+    % Liste of figures
+    \cleardoublepage 
+    \phantomsection
+    \addcontentsline{toc}{part}{List of figures}
+    \listoffigures
+
+    % Liste of tables
+    \cleardoublepage 
+    \phantomsection
+    \addcontentsline{toc}{part}{List of tables}
+    \listoftables
+
+
+
+\end{document}
+
+%
